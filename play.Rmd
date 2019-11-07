@@ -1,0 +1,225 @@
+---
+title: "play"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+I am now going to merge the EVT .csv into the monster csv
+
+```{r}
+library(tidyverse)
+if(!require(devtools)) install.packages("devtools")
+devtools::install_github("cardiomoon/moonBook")
+devtools::install_github("cardiomoon/webr")
+
+require(ggplot2)
+require(moonBook)
+require(webr)
+
+```
+1
+
+Import and then clean the Master data set
+
+```{r}
+
+library(readr)
+BpS_EVT_SLC_Sts <- read_csv("Raw Data/BpS-EVT-SLC-Sts.csv")
+View(BpS_EVT_SLC_Sts)
+
+BigData <- BpS_EVT_SLC_Sts
+
+#cleaning BigData
+
+BigData[, 1] <- NULL
+
+#head(BigData)
+
+```
+
+
+Prepare the L48statees data set for the merge to the master data set.
+
+```{r}
+
+#import L48States
+
+library(readr)
+L48states <- read_csv("Raw Data/L48states.csv")
+View(L48states)
+
+#cleaning time
+
+CleanStates <- L48states
+
+CleanStates <- CleanStates[, -c(1, 4, 7)] 
+
+#rename values to L48
+
+colnames(CleanStates)[colnames(CleanStates) == "VALUE"] <- "L48"
+
+#head(CleanStates)
+```
+
+
+Add the L48States data set to the master data set
+
+```{r}
+
+BigData_States <- merge(BigData, CleanStates, by = "L48")
+
+Miss15 <- subset(BigData_States, US_140EVT == -9999)
+#head(Miss15)
+  
+head(BigData_States)
+tail(BigData_States)
+
+```
+
+
+Clean the BpS data set and add to the big data set
+
+
+```{r}
+BPSclean <- BpS
+# remove unwanted columns
+
+
+BPSclean <- BPSclean[, -c(1, 4, 14:18)]
+BPSclean <- BPSclean[-c(1),]
+
+colnames(BPSclean)[colnames(BPSclean)=="VALUE"] <- "US_130BPS"
+colnames(BPSclean)[colnames(BPSclean)=="VALUE_1"] <- "US_130BPS_1"
+
+
+#head(BPSclean)
+
+#merge to big data set
+
+BigData_States_BPS <- merge(BigData_States, BPSclean, by = "US_130BPS")
+
+head(BigData_States_BPS)
+tail(BigData_States_BPS)
+
+#add in acre (mutate using 0.222 as conversion factor to COUNT)
+```
+
+Add EVT to the big data set
+
+```{r}
+
+EVTClean <- EVT
+
+#remove first row in EVTClean
+
+EVTClean <- EVTClean[-c(1), ]
+
+#rename values to US_140EVT
+
+colnames(EVTClean)[colnames(EVTClean)=="VALUE"] <- "US_140EVT"
+colnames(EVTClean)[colnames(EVTClean)=="VALUE_1"] <- "US_140EVT_1"
+
+#head(EVTClean)
+
+#merge EVTClean to master data set
+
+BigData_States_BPS_EVT <- merge(BigData_States_BPS, EVTClean, by = "US_140EVT")
+
+head(BigData_States_BPS_EVT)
+tail(BigData_States_BPS_EVT)
+
+```
+
+Add the sclass data set to the master data set
+
+```{r}
+
+#remove the first row of the sclass data set and rename value and value1
+
+sClassClean <- sclass
+
+sClassClean <- sClassClean[-c(1), ]
+
+colnames(sClassClean)[colnames(sClassClean)=="VALUE"] <- "US_140SCLASS"
+colnames(sClassClean)[colnames(sClassClean)=="VALUE"] <- "US_140SCLASS_1"
+
+
+#merge sClassClean to master data set
+
+BigData_States_BPS_EVT_sClass <- merge(BigData_States_BPS_EVT, sClassClean, by = "US_140SCLASS")
+
+head(BigData_States_BPS_EVT_sClass)
+tail(BigData_States_BPS_EVT_sClass)
+
+```
+
+
+Clean up the master data set after all the other data sets have been added
+
+```{r}
+
+MassiveData <- BigData_States_BPS_EVT_sClass
+
+#cleaning time
+
+MassiveData <- MassiveData[, -c(20, 34:40, 45:50)]
+
+MassiveData <- MassiveData[, -c(1:4, 7, 10, 15, 20:21, 23, 33:34)]
+MassiveData <- MassiveData[, -c(11)]
+
+#add the acres column
+MassiveData <- mutate(MassiveData, ACRES = COUNT.x * 0.222)
+
+head(MassiveData)
+tail(MassiveData)
+
+write.csv(MassiveData, "massiveData.csv")
+
+```
+
+
+create a bar graph using ggplot2
+
+```{r}
+#creating graph and making it look pretty
+
+library (plotly)
+
+graph <- ggplot(data = MassiveData, aes(x = EVT_CLASS, y = ACRES)) + geom_bar(stat = "identity", width = 0.25)
+
+graph <- graph + theme(axis.text.x = element_text(angle = 64, hjust = 1))
+
+graph + 
+
+```
+
+what percentage of the US does each region make up and then what classes make up waht percentage of each region?
+
+```{r}
+#get a data frame for the number of acres for each region
+
+acreRegions <- MassiveData[, c( 4, 24)]
+
+#head(acreRegions)
+
+acreRegions <- acreRegions %>%
+  group_by(SUB_REGION) %>%
+  summarise_all(funs(sum))
+
+RegionsClass <- MassiveData[, c(4, 20,24)]
+
+#head(acreRegions)
+
+#tail(acreRegions)
+  
+  pie <- PieDonut(MassiveData, aes(SUB_REGION, ACRES))
+  pie
+
+
+```
+
+
+
+

@@ -1,0 +1,50 @@
+Rowid_,VALUE,COUNT,STATE_FIPS,STATE_NAME,SUB_REGION,STAT_FLAG
+,1,148880219,1,Alabama,E S Cen,1
+,4,327303634,4,Arizona,Mtn,1
+,5,152256975,5,Arkansas,W S Cen,1
+,6,454134520,6,California,Pacific,1
+,8,299668583,8,Colorado,Mtn,1
+,9,14236773,9,Connecticut,N Eng,1
+,10,5822228,10,Delaware,S Atl,1
+,11,189412,11,District of Columbia,S Atl,1
+,12,162313113,12,Florida,S Atl,1
+,13,168807929,13,Georgia,S Atl,1
+,16,239822863,16,Idaho,Mtn,1
+,17,161971389,17,Illinois,E N Cen,1
+,18,104720405,18,Indiana,E N Cen,1
+,19,161911042,19,Iowa,W N Cen,1
+,20,236536803,20,Kansas,W N Cen,1
+,21,116057522,21,Kentucky,E S Cen,1
+,22,132578728,22,Louisiana,W S Cen,1
+,23,93091571,23,Maine,N Eng,1
+,24,28466628,24,Maryland,S Atl,1
+,25,23420884,25,Massachusetts,N Eng,1
+,26,167494725,26,Michigan,E N Cen,0
+,27,243133802,27,Minnesota,W N Cen,1
+,28,137084532,28,Mississippi,E S Cen,1
+,29,200988256,29,Missouri,W N Cen,1
+,30,423657992,30,Montana,Mtn,1
+,31,222538009,31,Nebraska,W N Cen,1
+,32,318351489,32,Nevada,Mtn,1
+,33,26665370,33,New Hampshire,N Eng,1
+,34,21924522,34,New Jersey,Mid Atl,1
+,35,350323482,35,New Mexico,Mtn,1
+,36,139964833,36,New York,Mid Atl,1
+,37,141957486,37,North Carolina,S Atl,0
+,38,203773655,38,North Dakota,W N Cen,1
+,39,118624543,39,Ohio,E N Cen,1
+,40,201456861,40,Oklahoma,W S Cen,1
+,41,279128879,41,Oregon,Pacific,0
+,42,130475515,42,Pennsylvania,Mid Atl,1
+,44,3102582,44,Rhode Island,N Eng,1
+,45,88964206,45,South Carolina,S Atl,1
+,46,222111714,46,South Dakota,W N Cen,1
+,47,121111319,47,Tennessee,E S Cen,1
+,48,760954609,48,Texas,W S Cen,1
+,49,244259600,49,Utah,Mtn,1
+,50,27614516,50,Vermont,N Eng,1
+,51,114968395,51,Virginia,S Atl,1
+,53,194167310,53,Washington,Pacific,0
+,54,69699833,54,West Virginia,S Atl,1
+,55,161700532,55,Wisconsin,E N Cen,0
+,56,281402091,56,Wyoming,Mtn,1
