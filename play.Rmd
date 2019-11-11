@@ -184,14 +184,19 @@ create a bar graph using ggplot2
 
 ```{r}
 #creating graph and making it look pretty
-
 library (plotly)
+library(scales)
 
-graph <- ggplot(data = MassiveData, aes(x = EVT_CLASS, y = ACRES)) + geom_bar(stat = "identity", width = 0.25)
+#options(scipen = 999)
 
-graph <- graph + theme(axis.text.x = element_text(angle = 64, hjust = 1))
+graph <- ggplot(MassiveData, aes(x = EVT_CLASS, y = ACRES)) + geom_bar(stat = "identity", width = 0.25)
 
-graph + 
+graph <- graph + scale_y_continuous(label = comma )
+
+graph <- graph + coord_flip()
+
+graph
+
 
 ```
 
