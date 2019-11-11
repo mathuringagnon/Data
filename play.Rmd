@@ -189,7 +189,7 @@ library(scales)
 
 #options(scipen = 999)
 
-graph <- ggplot(MassiveData, aes(x = EVT_CLASS, y = ACRES)) + geom_bar(stat = "identity", width = 0.25)
+graph <- ggplot(MassiveData, aes(x = reorder(EVT_CLASS, ACRES, function(x){sum(x)}), y = ACRES)) + geom_bar(stat = "identity", width = 0.25)
 
 graph <- graph + scale_y_continuous(label = comma )
 
