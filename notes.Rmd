@@ -1,0 +1,25 @@
+---
+title: "Ideas"
+output:
+  html_document:
+    theme: journal
+    highlight: tango
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Audience:
+  Data managers and ecologists nature conservancy and landfire dudes 
+  
+Purpose:
+  show people data and try and get people more interested
+  
+
+
+Ideas of questions to answer:
+  how has human settlement effected the natural ecosystems of NOrth America
+  

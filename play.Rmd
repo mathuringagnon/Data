@@ -200,26 +200,18 @@ graph
 
 ```
 
-what percentage of the US does each region make up and then what classes make up waht percentage of each region?
+what percentage of the US does each region make up and then what classes make up what percentage of each region?
 
 ```{r}
-#get a data frame for the number of acres for each region
+PertinentData <- MassiveData[, c(4, 20,24)]
 
-acreRegions <- MassiveData[, c( 4, 24)]
 
-#head(acreRegions)
+#acreRegions <- acreRegions %>%
+ # group_by(SUB_REGION) %>%
+  #summarise_all(funs(sum))
 
-acreRegions <- acreRegions %>%
-  group_by(SUB_REGION) %>%
-  summarise_all(funs(sum))
 
-RegionsClass <- MassiveData[, c(4, 20,24)]
-
-#head(acreRegions)
-
-#tail(acreRegions)
-  
-  pie <- PieDonut(MassiveData, aes(SUB_REGION, ACRES))
+  pie <- PieDonut(MassiveData, aes(SUB_REGION, count = ACRES ))
   pie
 
 
