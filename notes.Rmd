@@ -27,7 +27,7 @@ output:
   3. Looking at the changes in the ecosystems in the United States region can we find any major causes for these changes?
      Changes in the amount of water? Animals? Natural disasters?
   
-  4. How has human settlement effected the ecosystems in the united states' way of rebounding after natural disasters such as fires?
+  4. How has human settlement affected the ecosystems in the united states' way of rebounding after natural disasters such as fires?
   
   
   
@@ -38,3 +38,4 @@ output:
   2. Grouped graph of the different ecosystems in america for sense of scale with percentages historically vs now.
   
   3. 
+  

@@ -220,5 +220,16 @@ devtools::install_github("cardiomoon/webr")
 ```
 
 
+```{r}
+#find total number of acres
+acres <- MassiveData[, c(24)]
+
+head(acres)
+
+acres <- sum(acres, na.rm = FALSE)
+
+head(acres)
+
+```
 
 
