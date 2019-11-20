@@ -1,0 +1,10 @@
+---
+title: "Historical vs Currrent Natural Succession"
+output: html_document
+---
+
+
+
+
+
+### How does the historical natural succession and rebounding of ecosystems compare to how they do now?

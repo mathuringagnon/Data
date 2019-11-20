@@ -10,9 +10,6 @@ I am now going to merge the EVT .csv into the monster csv
 
 ```{r}
 library(tidyverse)
-if(!require(devtools)) install.packages("devtools")
-devtools::install_github("cardiomoon/moonBook")
-devtools::install_github("cardiomoon/webr")
 
 require(ggplot2)
 require(moonBook)
@@ -203,7 +200,12 @@ graph
 what percentage of the US does each region make up and then what classes make up what percentage of each region?
 
 ```{r}
-PertinentData <- MassiveData[, c(4, 20,24)]
+if(!require(devtools)) install.packages("devtools")
+devtools::install_github("cardiomoon/moonBook")
+devtools::install_github("cardiomoon/webr")
+
+
+#PertinentData <- MassiveData[, c(4, 20,24)]
 
 
 #acreRegions <- acreRegions %>%
@@ -211,8 +213,8 @@ PertinentData <- MassiveData[, c(4, 20,24)]
   #summarise_all(funs(sum))
 
 
-  pie <- PieDonut(MassiveData, aes(SUB_REGION, count = ACRES ))
-  pie
+  #pie <- PieDonut(MassiveData, aes(SUB_REGION, count = ACRES ))
+  #pie
 
 
 ```

@@ -7,19 +7,34 @@ output:
 ---
 
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-Audience:
+#### Audience:
   Data managers and ecologists nature conservancy and landfire dudes 
   
-Purpose:
+#### Purpose:
   show people data and try and get people more interested
   
 
 
-Ideas of questions to answer:
-  how has human settlement effected the natural ecosystems of NOrth America
+#### Possible prompts:
   
+  1. How has human settlement effected the natural ecosystems in the united states and how much of that change is natural vs 
+     man made?
+  
+  2. Looking at the rare (small percentage) ecosystems in the United States region before settlement how have they changed today? 
+     Are they still here? Have they grown? What do the regions that changed look like now? What are their importance in the 
+     world then and how are they important then? (if they are).
+  
+  3. Looking at the changes in the ecosystems in the United States region can we find any major causes for these changes?
+     Changes in the amount of water? Animals? Natural disasters?
+  
+  4. How has human settlement effected the ecosystems in the united states' way of rebounding after natural disasters such as fires?
+  
+  
+  
+#### Graphs that I will probably need:
+
+  1. Pixel graph of the different ecosystems in america historically vs now.
+  
+  2. Grouped graph of the different ecosystems in america for sense of scale with percentages historically vs now.
+  
+  3. 
