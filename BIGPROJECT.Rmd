@@ -1,10 +1,51 @@
 ---
-title: "Historical vs Currrent Natural Succession"
+title: "Historical vs Currrent"
 output: html_document
 ---
 
+### The Contiguous United States
+
+##### Ecosystems are constantly changing and adapting whether it's slowly and minutely or abrubtly and drastically. Changes  
 
 
 
 
-### How does the historical natural succession and rebounding of ecosystems compare to how they do now?
+#### Comparison of ecosystems historically vs now
+
+```{r}
+library(DataCombine)
+#Making a new dataset with historical acres and then another with current
+
+hist <- BPSclean[, c(2, 11)]
+cur <- EVTClean[, c(3, 10)]
+
+#renaming cols
+
+colnames(hist)[colnames(hist)=="COUNT"] <- "COUNT_HIST"
+
+colnames(cur)[colnames(cur)=="COUNT"] <- "COUNT_CURR"
+colnames(cur)[colnames(cur)=="EVT_PHYS"] <- "GROUPVEG"
+
+cur$GROUPVEG[ c(626:639)] <- "Sparse"
+
+tail(cur)
+#comp <- merge(hist, cur, by  = "GROUPVEG")
+
+#comp <- mutate(comp, ACRES_HIST = COUNT_HIST * 0.222)
+#comp <- mutate(comp, ACRES_CURR = COUNT_CURR * 0.222)
+
+#comp <- comp[, -c(2, 3)]
+
+
+
+#comp.long <- melt(comp)
+
+#head(comp.long)
+#tail(comp.long)
+
+#eco <- ggplot(comp.long, aes(fill = variable, y = value, x = reorder(CLASSNAME, value, function(x){sum(x)}))) + geom_bar(position="dodge", stat="identity")
+
+eco
+
+```
+
